@@ -1,5 +1,6 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 const axios = require('axios');
+const moment = require('moment');
 
 function helper(data) {
   const { centers } = data;
@@ -32,9 +33,11 @@ function helper(data) {
 }
 
 export default (req, res) => {
+  const { districtId = 294 } = req.query;
+  const date = moment().format('DD-MM-YYYY');
   const config = {
     method: 'get',
-    url: 'https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict?district_id=294&date=03-05-2021',
+    url: `https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict?district_id=${districtId}&date=${date}`,
     headers: {
       'authority': 'cdn-api.co-vin.in',
       'pragma': 'no-cache',
@@ -55,7 +58,6 @@ export default (req, res) => {
   try {
     axios(config)
       .then(function (response) {
-        // console.log(JSON.stringify(response.data));
         const data = helper(response.data);
         res.status(200).json(JSON.stringify(data))
       })
@@ -63,7 +65,6 @@ export default (req, res) => {
         res.status(500).json(JSON.stringify(error))
       });
   } catch (error) {
-    // console.error(error);
     res.status(500).json(JSON.stringify(error))
   }
 

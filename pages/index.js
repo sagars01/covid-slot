@@ -1,13 +1,16 @@
 import { useEffect, useState } from "react"
 import axios from 'axios';
 import ReactAudioPlayer from 'react-audio-player';
+import { useRouter } from "next/router";
 export default function Home() {
 
   const [data, setData] = useState(null);
   const [check, setCheck] = useState(0);
+  const router = useRouter();
+  const { districtId = 294 } = router.query;
   const getData = () => {
     setCheck(true);
-    axios.get('/api/hello').then((response) => {
+    axios.get(`/api/hello?districtId=${districtId}`).then((response) => {
       setData(response.data);
     }).catch((error) => {
       setData(JSON.stringify(error));
@@ -21,7 +24,6 @@ export default function Home() {
       getData();
     }, timeOut);
     return () => clearInterval(interval);
-
   }, [check])
 
   return (
