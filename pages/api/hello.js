@@ -9,7 +9,7 @@ function helper(data) {
     centers.forEach(center => {
       const { sessions } = center;
       sessions.forEach(element => {
-        if (element.available_capacity === 0 && element.min_age_limit === 18) {
+        if (element.available_capacity > 0 && element.min_age_limit === 18) {
           let dataRequired = {
             centerName: '',
             available_capacity: 0,
