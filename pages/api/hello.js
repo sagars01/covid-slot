@@ -39,21 +39,17 @@ export default (req, res) => {
     method: 'get',
     url: `https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict?district_id=${districtId}&date=${date}`,
     headers: {
-      'authority': 'cdn-api.co-vin.in',
-      'pragma': 'no-cache',
-      'cache-control': 'no-cache',
-      'accept': 'application/json, text/plain, */*',
-      'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36',
-      'sec-gpc': '1',
-      'origin': 'https://www.cowin.gov.in',
-      'sec-fetch-site': 'cross-site',
-      'sec-fetch-mode': 'cors',
-      'sec-fetch-dest': 'empty',
-      'referer': 'https://www.cowin.gov.in/',
-      'accept-language': 'en-GB,en-US;q=0.9,en;q=0.8',
-      'age': '18'
-    }
+      "accept": "application/json, text/plain, */*",
+      "accept-language": "en-GB,en-US;q=0.9,en;q=0.8",
+      "cache-control": "no-cache",
+      "pragma": "no-cache",
+      "sec-fetch-dest": "empty",
+      "sec-fetch-mode": "cors",
+      "sec-fetch-site": "cross-site",
+      "sec-gpc": "1"
+    },
   };
+
 
   try {
     axios(config)
