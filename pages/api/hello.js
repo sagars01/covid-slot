@@ -5,7 +5,7 @@ const moment = require('moment');
 function helper(data) {
   const { centers } = data;
   const finalData = [];
-  try {
+  try { 
     centers.forEach(center => {
       const { sessions } = center;
       sessions.forEach(element => {
